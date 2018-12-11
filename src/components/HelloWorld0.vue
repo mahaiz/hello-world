@@ -11,7 +11,7 @@
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
     </ul>
-    <h3 v-on:click="greet">Essential Links</h3>
+    <h3>Essential Links</h3>
     <ul>
       <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
@@ -35,39 +35,12 @@
 </template>
 
 <script>
-    import Jsonp from 'jsonp'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String,
       slotDD:Object
-  },
-    methods: {
-        greet: function (event) {
-            console.log('event=',event)
-            // this.getData('http://apilesson.hexun.com/comment/203539/0/1/10');
-            Jsonp('http://apilesson.hexun.com/comment/203539/0/1/10', null, (err, data) => {
-                if (err) {
-                    console.error('err=',err.message);
-                } else {
-                    console.log('data=',data);
-                }
-            })
-        }
-    }
-   /* methods:{
-      testClick:function(event){
-          // console.log(this.loginAjax)
-          /!*this.axios.get('http://apilesson.hexun.com/comment/203539/0/1/10').then((response) => {
-              // console.log(response.data)
-          })*!/
-      }
-    },*/
-    /*methods: {
-        testClick: function () {
-            this.a++
-        }
-    }*/
+  }
 }
 </script>
 

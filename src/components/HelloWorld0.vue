@@ -35,18 +35,26 @@
 </template>
 
 <script>
+    /*const httpToHttps=window.httpToHttps||{editHost:(_url)=>{
+        console.log('_url=',_url,httpToHttps)
+        return _url
+        }};*/
     export default {
         name: 'HelloWorld',
+        created:function(){
+        },
         props: {
             msg: String,
-            slotDD:Object
+            slotDD:Object,
+            httpToHttps:Object
         },
         methods: {
             greet: function (event) {
                 console.log('event=',event)
-                this.getData('http://apilesson.hexun.com/comment/203539/0/1/10',function (_data) {
+                console.log('httpToHttps=',this.httpToHttps,window.httpToHttps)
+                this.getData(this.httpToHttps.editHost('http://apilesson.hexun.com/comment/203539/0/1/10'),function (_data) {
                     console.log('_data=',_data)
-                    window.location.href='./index.html';
+                    // window.location.href='./index.html';
                 });
             }
         }

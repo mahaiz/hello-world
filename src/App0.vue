@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    <loadCom :src="this.jsUrl" @load-js-finish="this.jsLoadCallBack"></loadCom>
     <!--<HelloWorld0 msg="HelloWorld0:Welcome to Your Vue.js App" v-bind:slotDD="slotData" v-if="is0">
       <p slot-scope="slotProps"><span v-if="slotProps.t0=='m1'">^_^ </span>{{slotProps.t1}}+{{slotProps.t0}}</p>
     </HelloWorld0>
     <HelloWorld msg="HelloWorld:Welcome to Your Vue.js App" v-bind:slotDD="slotData" v-else>
       <p slot-scope="slotProps"><span v-if="slotProps.t0=='m1'">^_^ </span>{{slotProps.t1}}+{{slotProps.t0}}</p>
     </HelloWorld>-->
-    <component :is="comId" :msg="msg" v-bind:slotDD="slotData">
+    <component :is="comId" :msg="msg" v-bind:slotDD="slotData" :httpToHttps="httpToHttps">
       <p slot-scope="slotProps"><span v-if="slotProps.t0=='m1'">^_^ </span>{{slotProps.t1}}+{{slotProps.t0}}</p>
     </component >
   </div>
@@ -25,7 +26,12 @@ export default {
           },
           is0:false,
           comId:'',
-          msg:'HelloWorld:Welcome to Your Vue.js App'
+          msg:'HelloWorld:Welcome to Your Vue.js App',
+          jsUrl:'http://imgcd.hexun.com/js/httpToHttps.js',
+          httpToHttps:{editHost:(_url)=>{
+                  console.log('_url=',_url,httpToHttps)
+                  return _url
+              }}
       }
     },
     created(){
@@ -46,7 +52,7 @@ export default {
           this.slotData={
               m1: 'ma1',
               m2: 'ma2',
-              m3: 'ma3'
+              m3: 'ma30'
           }
         }
         console.log('this.components=',this)
@@ -63,8 +69,31 @@ export default {
               console.log('_d=', this)
               resolve(_d)
           })
-      }*/
-  }
+      }*/,
+      loadCom: {
+          render (createElement) {
+              var self = this
+              return createElement('script', {
+                  attrs: { type: 'text/javascript', src: this.src },
+                  on: {
+                      load: function () {
+                          console.log('load js')
+                          self.$emit('load-js-finish')
+                      }
+                  }
+              })
+          },
+          props: {
+              src: { type: String, required: true }
+          }
+      }
+  },
+    methods:{
+        jsLoadCallBack:function(){
+            this.httpToHttps=window.httpToHttps;
+            console.log('加载完成',this.httpToHttps)
+        }
+    }
 }
 </script>
 

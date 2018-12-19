@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build --modern",
+    "build_comm": "vue-cli-service build --modern --target lib --name myLib ./src/main1.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

@@ -17,7 +17,7 @@ export default {
           slotData: {
               m1: 'ma1',
               m2: 'ma2',
-              m3: 'ma3'
+              m3: 'ma33'
           }
       }
     },

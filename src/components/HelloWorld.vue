@@ -43,8 +43,8 @@ export default {
   },
     methods: {
         greet: function (event) {
-            console.log('event=',event)
-                window.location.href='./index0.html';
+            console.log('event=',event,window.httpToHttps)
+                //window.location.href='./index0.html';
         }
     }
 }

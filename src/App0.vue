@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <loadCom :src="this.jsUrl" @load-js-finish="this.jsLoadCallBack"></loadCom>
     <!--<HelloWorld0 msg="HelloWorld0:Welcome to Your Vue.js App" v-bind:slotDD="slotData" v-if="is0">
       <p slot-scope="slotProps"><span v-if="slotProps.t0=='m1'">^_^ </span>{{slotProps.t1}}+{{slotProps.t0}}</p>
@@ -18,6 +18,8 @@
 // import HelloWorld from './components/HelloWorld.vue';
 // import HelloWorld0 from './components/HelloWorld0.vue';
 // import Hello from './components/Hello.vue';
+// import "core-js/modules/es6.promise";
+// import "core-js/modules/es6.symbol";
 export default {
   name: 'app0',
     data(){
@@ -29,7 +31,7 @@ export default {
           msg:'HelloWorld:Welcome to Your Vue.js App',
           jsUrl:'http://imgcd.hexun.com/js/httpToHttps.js',
           httpToHttps:{editHost:(_url)=>{
-                  console.log('_url=',_url,httpToHttps)
+                  console.log('_url=',_url)
                   return _url
               }}
       }

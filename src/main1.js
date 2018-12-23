@@ -21,7 +21,7 @@ let timeOut=function (url) {
 
 async function asyncPrint(url) {
     const data=await timeOut(url);
-    console.log('发起请求:',url,data)
+    console.log('发起请求0:',url,data)
     return data;
 }
 Vue.use({

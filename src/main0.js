@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App0.vue'
 
 import Jsonp from 'jsonp'
+// import "@babel/polyfill"
 let timeOut=function (url) {
     return new Promise((resolve) => {
         Jsonp(url, null, (err, data) => {

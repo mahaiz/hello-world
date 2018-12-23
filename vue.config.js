@@ -23,7 +23,7 @@ module.exports = {
             title: 'Index Page',
             // 在这个页面中包含的块，默认情况下会包含
             // 提取出来的通用 chunk 和 vendor chunk。
-            chunks: ['chunk-vendors', 'chunk-common', 'index']
+            //chunks: ['chunk-vendors', 'chunk-common','index']
         },
         index0: {
             // page 的入口
@@ -37,13 +37,44 @@ module.exports = {
             title: 'test',
             // 在这个页面中包含的块，默认情况下会包含
             // 提取出来的通用 chunk 和 vendor chunk。
-            chunks: ['chunk-vendors', 'chunk-common', 'index0']
+            // chunks: ['chunk-vendors', 'chunk-common', 'index0']
         },
         // 当使用只有入口的字符串格式时，
         // 模板会被推导为 `public/subpage.html`
         // 并且如果找不到的话，就回退到 `public/index.html`
         // 输出文件名会被推导为 `subpage.html`。
         // subpage: 'src/subpage/main.js'
+    },
+    configureWebpack:config=>{
+        /*config.optimization={
+            splitChunks: {
+                cacheGroups: {
+                    vendors:
+                    {
+                        name: 'chunk-vendors',
+                            test: /[\\\/]node_modules[\\\/]/,
+                        priority: -10,
+                        chunks: 'initial'
+                    },
+                    common:
+                    {
+                        name: 'chunk-common',
+                            minChunks: 2,
+                        priority: -20,
+                        chunks: 'initial',
+                        reuseExistingChunk: true
+                    },
+                    babelCom:
+                    {
+                        name: 'babel-common',
+                            test: /.*?(babel).*?\.js$/,
+                        priority: 0,
+                        chunks: 'all',
+                        reuseExistingChunk: true
+                    }
+                }
+            }
+        }*/
     },
     filenameHashing:false,
     /*transpileDependencies: [
@@ -52,7 +83,7 @@ module.exports = {
         /other-dep/
     ]*/
     chainWebpack: config => {
-        // console.log('config=',config.entry('index'))
+        // console.log('config=',config.output('path'))
         /*config
             .plugin('html')
             .tap(args => {

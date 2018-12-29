@@ -6,6 +6,7 @@ import App from './App0.vue'
 // import "core-js/modules/es6.map";
 // import "core-js/modules/es6.object.is";
 import Jsonp from 'jsonp';
+
 let timeOut=function (url) {
     return new Promise((resolve) => {
         Jsonp(url, null, (err, data) => {
@@ -21,7 +22,7 @@ let timeOut=function (url) {
 
 async function asyncPrint(url) {
     const data=await timeOut(url);
-    console.log('发起请求0:',url,data)
+    console.log('发起请求0:',url,typeof data)
     return data;
 }
 Vue.use({

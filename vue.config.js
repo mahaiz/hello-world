@@ -10,7 +10,7 @@ module.exports = {
         host:'test.hexun.com',
         port: 8000,
     },
-    pages: {
+    /*pages: {
         index: {
             // page 的入口
             entry: 'src/main.js',
@@ -44,18 +44,26 @@ module.exports = {
         // 并且如果找不到的话，就回退到 `public/index.html`
         // 输出文件名会被推导为 `subpage.html`。
         // subpage: 'src/subpage/main.js'
-    },
+    },*/
     configureWebpack:config=>{
-        /*config.optimization={
-            splitChunks: {
+        config.optimization={
+            /*splitChunks: {
                 cacheGroups: {
+                    /!*vueJs:
+                        {
+                            name: 'chunk-vue',
+                            test: /[\\\/]vue[\\\/]$/,
+                            priority: -9,
+                            chunks: 'initial',
+                            // reuseExistingChunk: true
+                        },*!/
                     vendors:
-                    {
-                        name: 'chunk-vendors',
+                        {
+                            name: 'chunk-vendors',
                             test: /[\\\/]node_modules[\\\/]/,
-                        priority: -10,
-                        chunks: 'initial'
-                    },
+                            priority: -10,
+                            chunks: 'initial'
+                        },
                     common:
                     {
                         name: 'chunk-common',
@@ -63,18 +71,10 @@ module.exports = {
                         priority: -20,
                         chunks: 'initial',
                         reuseExistingChunk: true
-                    },
-                    babelCom:
-                    {
-                        name: 'babel-common',
-                            test: /.*?(babel).*?\.js$/,
-                        priority: 0,
-                        chunks: 'all',
-                        reuseExistingChunk: true
                     }
                 }
-            }
-        }*/
+            }*/
+        }
     },
     filenameHashing:false,
     /*transpileDependencies: [
